@@ -1,6 +1,6 @@
-import { Book } from './book.js';
+import Book from './book.js';
 
-export default class BookCollection {
+export class BookCollection {
   constructor() {
     this.books = [];
   }
@@ -56,3 +56,5 @@ export default class BookCollection {
     bookListElement.classList.toggle('border', this.books.length > 0);
   }
 }
+
+export default BookCollection;

@@ -12,12 +12,6 @@ setInterval(() => {
   time.innerHTML = getTime();
 }, 1000);
 
-export const initializeApp = () => {
-  const bookCollection = new BookCollection();
-  bookCollection.displayBooks();
-  setupEventListeners(bookCollection);
-};
-
 const setupEventListeners = (bookCollection) => {
   const addBookForm = document.getElementById('addBookForm');
   const bookListElement = document.getElementById('bookList');
@@ -41,3 +35,11 @@ const setupEventListeners = (bookCollection) => {
     }
   });
 };
+
+export const initializeApp = () => {
+  const bookCollection = new BookCollection();
+  bookCollection.displayBooks();
+  setupEventListeners(bookCollection);
+};
+
+export default setupEventListeners;
