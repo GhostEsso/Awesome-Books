@@ -1,6 +1,6 @@
 import { Book } from './book.js';
 
-export class BookCollection {
+export default class BookCollection {
   constructor() {
     this.books = [];
   }

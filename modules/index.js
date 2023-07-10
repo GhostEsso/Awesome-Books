@@ -2,6 +2,14 @@ import { initializeApp } from './app.js';
 
 initializeApp();
 
+const booksLink = document.getElementById('booksLink');
+const addBookLink = document.getElementById('addBookLink');
+const contactLink = document.getElementById('contactLink');
+const bookListSection = document.getElementById('bookListSection');
+const addBookSection = document.getElementById('addBookSection');
+const contactSection = document.getElementById('contactSection');
+
+
 function activateLink(link) {
   booksLink.classList.remove('active');
   addBookLink.classList.remove('active');
