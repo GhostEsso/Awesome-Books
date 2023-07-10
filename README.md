@@ -1,7 +1,6 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
   <br/>
 
   <h3><b>Awesome books</b></h3>
@@ -44,10 +43,20 @@ A simple Book storing web app.
 
 ### Key Features <a name="key-features"></a>
 
+1. Prints out the book
+2. Give the link to read the book
+3. sharing fonctionnalities
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 💻 Getting Started <a name="getting-started"></a>
+
+
+### Prerequisites
+
+In order to run this project you need:
+
+install node and vscode
 
 ### setup
 <p>Clone this repository to your desired folder</p>
@@ -87,6 +96,8 @@ npx stylelint "*/.{css,scss}"
 
 ## 🔭 Future Features <a name="future-features">
 
+- Add more style with CSS;
+- Create contact form.
 
 
 
@@ -99,6 +110,9 @@ npx stylelint "*/.{css,scss}"
 ## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
+
+- GitHub: [@Zelalem](https://github.com/Zelalem)
+- LinkedIn: [@eZelalem](https://www.linkedin.com/in/zelalem-62aa081a1/)
 
 Feel free to check the [issues page].
 

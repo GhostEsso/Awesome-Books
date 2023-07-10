@@ -141,3 +141,12 @@ nav ul li a.active {
   justify-content: flex-end;
   margin-right: 4%;
 }
+
+/* Style du contenu de la page */
+#content {
+  flex: 1;
+}
+
+footer {
+  flex-shrink: 0;
+}
