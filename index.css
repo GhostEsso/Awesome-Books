@@ -26,8 +26,8 @@ h1 {
 #addBookForm {
   display: grid;
   place-items: center;
-  border: 2px solid #e0dddd;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 63%);
+  border: 2px solid #161515;
+  /* box-shadow: 0 5px 20px rgba(0, 0, 0, 63%); */
   margin-left: 40%;
   margin-right: 40%;
   padding-top: 2%;
@@ -78,8 +78,8 @@ nav ul {
   align-items: center;
   margin: 0;
   padding: 1px;
-  border: 2px solid #e0dddd;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 30%);
+  border: 2px solid #0c0c0c;
+  /* box-shadow: 0 5px 20px rgba(0, 0, 0, 30%); */
 }
 
 nav ul .logo {
@@ -115,8 +115,8 @@ nav ul li a.active {
 #contactSection {
   display: grid;
   place-items: center;
-  border: 2px solid #e0dddd;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 63%);
+  border: 2px solid #1d1b1b;
+  /* box-shadow: 0 5px 20px rgba(0, 0, 0, 63%); */
   padding-top: 1%;
   padding-bottom: 1%;
   padding-left: 2%;
@@ -125,20 +125,15 @@ nav ul li a.active {
   margin-right: 30%;
 }
 
-#bookList {
-
-
-}
-
 #bookList.border {
-  border: 1px solid rgba(97, 255, 6, 0.01);
-  padding-left: 10%;
-  padding-right: 10%;
+  border: 3px solid rgba(8, 8, 8, 0.808);
+  padding-left: 1%;
+  padding-right: 1%;
+  margin: 1%;
 }
-
 /* footer  */
 .copyright {
-  border: 2px solid black;
+  border: 2px solid rgb(0, 0, 0);
   padding: 5px;
   margin-bottom: 5px;
 }
