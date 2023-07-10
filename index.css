@@ -6,7 +6,7 @@
 
 body {
   height: 100vh;
-  font-family: 'Quicksand' sans-serif;
+  font-family: sans-serif;
 }
 
 h1 {
@@ -27,6 +27,7 @@ h1 {
   display: grid;
   place-items: center;
   border: 2px solid #161515;
+
   /* box-shadow: 0 5px 20px rgba(0, 0, 0, 63%); */
   margin-left: 40%;
   margin-right: 40%;
@@ -36,7 +37,7 @@ h1 {
 
 button {
   display: grid;
-  margin-left: auto9.5%;
+  margin-left: auto 9%;
   margin-top: 1%;
 }
 
@@ -54,7 +55,7 @@ button:hover {
 .even-book {
   background-color: silver;
   border: 2px solid #e0dddd;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0);
+  box-shadow: 0 5px 20px rgb(0 0 0 / 0%);
 }
 
 .odd-book {
@@ -79,6 +80,7 @@ nav ul {
   margin: 0;
   padding: 1px;
   border: 2px solid #0c0c0c;
+
   /* box-shadow: 0 5px 20px rgba(0, 0, 0, 30%); */
 }
 
@@ -89,7 +91,7 @@ nav ul .logo {
 
 nav ul li {
   margin-right: 20px;
-  border-right: 1px solid rgb(128, 47, 0);
+  border-right: 1px solid rgb(128 47 0);
   padding-right: 10px;
 }
 
@@ -105,7 +107,7 @@ nav ul li a {
 }
 
 nav ul li a.active {
-  color: #ff0000;
+  color: #f00;
 }
 
 .right-section {
@@ -116,24 +118,23 @@ nav ul li a.active {
   display: grid;
   place-items: center;
   border: 2px solid #1d1b1b;
+
   /* box-shadow: 0 5px 20px rgba(0, 0, 0, 63%); */
   padding-top: 1%;
   padding-bottom: 1%;
-  padding-left: 2%;
-  padding-right: -5%;
+  padding-left: 3%;
   margin-left: 30%;
   margin-right: 30%;
 }
 
 #bookList.border {
-  border: 3px solid rgb(8, 8, 8);
-  padding-left: 0,5%;
-  padding-right: 0,5%;
+  border: 3px solid rgb(8 8 8);
   margin: 1%;
 }
+
 /* footer  */
 .copyright {
-  border: 2px solid rgb(0, 0, 0);
+  border: 2px solid rgb(0 0 0);
   padding: 5px;
   margin-bottom: 5px;
 }

@@ -1,5 +1,6 @@
-// app.js
 import { DateTime } from './luxon.js';
+
+import { BookCollection } from './bookCollection.js';
 
 const getTime = () => {
   const dt = DateTime.now();
@@ -10,9 +11,6 @@ const time = document.getElementById('current_date');
 setInterval(() => {
   time.innerHTML = getTime();
 }, 1000);
-
-
-import { BookCollection } from './bookCollection.js';
 
 export const initializeApp = () => {
   const bookCollection = new BookCollection();

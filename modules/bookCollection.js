@@ -30,7 +30,7 @@ export class BookCollection {
       titleElement.textContent = book.title;
 
       const authorElement = document.createElement('span');
-      authorElement.textContent = ' by ' + book.author;
+      authorElement.textContent = ` by ${book.author}`;
 
       const removeButton = document.createElement('button');
       removeButton.textContent = 'Remove';
