@@ -130,7 +130,6 @@ nav ul li a.active {
   margin: 1%;
 }
 
-/* footer  */
 .copyright {
   border: 2px solid rgb(0 0 0);
   padding: 5px;
@@ -140,5 +139,5 @@ nav ul li a.active {
 #current_date {
   display: flex;
   justify-content: flex-end;
-  margin-right: 5%;
+  margin-right: 4%;
 }
