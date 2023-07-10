@@ -54,7 +54,7 @@ button:hover {
 .even-book {
   background-color: silver;
   border: 2px solid #e0dddd;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 63%);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0);
 }
 
 .odd-book {
@@ -126,9 +126,9 @@ nav ul li a.active {
 }
 
 #bookList.border {
-  border: 3px solid rgba(8, 8, 8, 0.808);
-  padding-left: 1%;
-  padding-right: 1%;
+  border: 3px solid rgb(8, 8, 8);
+  padding-left: 0,5%;
+  padding-right: 0,5%;
   margin: 1%;
 }
 /* footer  */

@@ -1,5 +1,15 @@
 // app.js
-import { DateTime } from './node_modules/luxon/build/global/luxon.min.js';
+import { DateTime } from './luxon.js';
+
+const getTime = () => {
+  const dt = DateTime.now();
+  return dt.toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
+};
+
+const time = document.getElementById('current_date');
+setInterval(() => {
+  time.innerHTML = getTime();
+}, 1000);
 
 
 import { BookCollection } from './bookCollection.js';
@@ -33,14 +43,3 @@ const setupEventListeners = (bookCollection) => {
     }
   });
 };
-
-const updateCurrentDate = () => {
-  const currentDateElement = document.getElementById('current_date');
-  const currentDateTime = DateTime.now().toLocaleString(DateTime.DATETIME_FULL);
-  currentDateElement.textContent = currentDateTime;
-}
-
-setInterval(updateCurrentDate, 1000);
-
-updateCurrentDate();
-
