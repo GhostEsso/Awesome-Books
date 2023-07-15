@@ -5,7 +5,7 @@
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   font-family: sans-serif;
 }
 
@@ -26,9 +26,8 @@ h1 {
 #addBookForm {
   display: grid;
   place-items: center;
-  border: 2px solid #161515;
-
-  /* box-shadow: 0 5px 20px rgba(0, 0, 0, 63%); */
+  border: 2px solid #b8b1b1b7;
+  box-shadow: 0 5px 20px rgba(10, 6, 6, 0.63);
   margin-left: 40%;
   margin-right: 40%;
   padding-top: 2%;
@@ -78,9 +77,8 @@ nav ul {
   align-items: center;
   margin: 0;
   padding: 1px;
-  border: 2px solid #0c0c0c;
-
-  /* box-shadow: 0 5px 20px rgba(0, 0, 0, 30%); */
+  border: 2px solid #fff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.548);
 }
 
 nav ul .logo {
@@ -116,13 +114,14 @@ nav ul li a.active {
 #contactSection {
   display: grid;
   place-items: center;
-  border: 2px solid #1d1b1b;
-
-  /* box-shadow: 0 5px 20px rgba(0, 0, 0, 63%); */
+  border: 2px solid #fff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.685);
   padding-top: 1%;
   padding-bottom: 1%;
+  padding-left: 3%;
   margin-left: 30%;
   margin-right: 30%;
+  list-style-type: none;
 }
 
 #bookList.border {
@@ -133,7 +132,6 @@ nav ul li a.active {
 .copyright {
   border: 2px solid rgb(0 0 0);
   padding: 5px;
-  margin-bottom: 5px;
 }
 
 #current_date {
