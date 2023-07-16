@@ -2,7 +2,7 @@ import Book from './book.js';
 
 export class BookCollection {
   constructor() {
-    this.books = [];
+    this.books = JSON.parse(localStorage.getItem('bookCollection')) || [];
   }
 
   addBook(title, author) {
@@ -10,12 +10,14 @@ export class BookCollection {
     this.books.push(book);
     this.displayBooks();
     this.updateBookListBorder();
+    this.saveBooksToLocalStorage();
   }
 
   removeBook(index) {
     this.books.splice(index, 1);
     this.displayBooks();
     this.updateBookListBorder();
+    this.saveBooksToLocalStorage();
   }
 
   displayBooks() {
@@ -46,14 +48,16 @@ export class BookCollection {
       bookElement.classList.add(index % 2 === 0 ? 'even-book' : 'odd-book');
     });
 
-    localStorage.setItem('bookCollection', JSON.stringify(this.books));
-
     this.updateBookListBorder();
   }
 
   updateBookListBorder() {
     const bookListElement = document.getElementById('bookList');
     bookListElement.classList.toggle('border', this.books.length > 0);
+  }
+
+  saveBooksToLocalStorage() {
+    localStorage.setItem('bookCollection', JSON.stringify(this.books));
   }
 }
 
