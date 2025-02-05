@@ -3,75 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Books App</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Awesome Books</title>
     <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <h1 class="logo" href="index.html">Awesome Books</h1>
-        <li><a id="booksLink" href="#" class="active">List</a></li>
-        <li><a id="addBookLink" href="#">Add New</a></li>
-        <li><a id="contactLink" href="#">Contact</a></li>
-      </ul>
-    </nav>
-    <span id="current_date"></span>
-  </header>
+    <header class="header">
+        <div class="menu-icon" id="menuIcon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav class="nav-links">
+            <a href="#" class="list-link">Books List</a>
+            <a href="#" class="add-link">Add new</a>
+            <a href="#" class="contact-link">Contact</a>
+        </nav>
+    </header>
 
-  <main>
+    <main class="main-content">
+        <div class="date-time" id="date-time"></div>
 
-<section id="bookListSection">
-  <h1>All awesome books</h1>
-   <div class="container">
-    <div id="bookList">
-        <!-- Here will be displayed books added-->
-    </div>
-  </div>
-</section>
-  
-  <!--my form-->
-        <!-- <hr class="separator"> -->
-<section id="addBookSection">
-     
-        <br>
-    <form id="addBookForm">
-      <h3>Add a new book</h3>
-        <br>
-      <input type="text" id="titleInput" placeholder="Title" required>
-        <br>
-      <input type="text" id="authorInput" placeholder="Author" required><br>
-      <button type="submit">Add</button>
-    </form>
-</section>
+        <section class="books-section">
+            <h1>All Awesome Books</h1>
+            <div class="books-container" id="books-list">
+                <!-- Les livres seront ajoutés ici dynamiquement -->
+            </div>
+        </section>
 
-      <br><br><br><br>
+        <section class="add-section">
+            <h2>Add a new book</h2>
+            <form class="add-book-form" id="add-book">
+                <div class="form-group">
+                    <input type="text" id="title" placeholder="Title" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="author" placeholder="Author" required>
+                </div>
+                <button type="submit" class="add-btn">Add Book</button>
+            </form>
+        </section>
 
-  <section id="contactSection" class="content-section">
-    <h2>Contact Information</h2>
-      <br>
-    <p>Do have any questions or you just want to say "Hello"?<br>
-    You can reach out to us</p>
-  
-      <br><br>
+        <section class="contact-section">
+            <h2>Contact Information</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>lilipitaham@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+22890516979</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Lomé, Togo</span>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <ul>
-      <li>    Our email: lilipitaham@gmail.com</li>
-      <li>    Our phone number: 0022892289005</li>
-      <li>    Our address: Rue Minamadou, Agoè-Logopé, Lomé, Togo</li>
-    </ul>
-  </section>
-</main>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-  <footer>
-    <div class="copyright">
-      <p>Copyright owned by Essohanam TAMBANA &copy;</p>
-    </div>
-  </footer>
-
-    <script src="modules/index.js" type="module"></script>
- </body>
+    <script type="module" src="modules/index.js"></script>
+</body>
 </html>

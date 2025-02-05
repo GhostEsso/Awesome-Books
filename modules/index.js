@@ -1,42 +1,56 @@
 import { initializeApp } from './app.js';
+import { initMobileMenu } from './mobileMenu.js';
 
+// Initialiser le menu mobile en premier
+initMobileMenu();
+
+// Ensuite initialiser l'application
 initializeApp();
 
-const booksLink = document.getElementById('booksLink');
-const addBookLink = document.getElementById('addBookLink');
-const contactLink = document.getElementById('contactLink');
-const bookListSection = document.getElementById('bookListSection');
-const addBookSection = document.getElementById('addBookSection');
-const contactSection = document.getElementById('contactSection');
+const listLink = document.querySelector('.list-link');
+const addLink = document.querySelector('.add-link');
+const contactLink = document.querySelector('.contact-link');
 
-const activateLink = (link) => {
-  booksLink.classList.remove('active');
-  addBookLink.classList.remove('active');
-  contactLink.classList.remove('active');
+const booksSection = document.querySelector('.books-section');
+const addSection = document.querySelector('.add-section');
+const contactSection = document.querySelector('.contact-section');
 
-  link.classList.add('active');
-};
+// Cacher les sections sauf la liste des livres par défaut
+addSection.style.display = 'none';
+contactSection.style.display = 'none';
 
 const showSection = (section) => {
-  bookListSection.style.display = 'none';
-  addBookSection.style.display = 'none';
+  // Cacher toutes les sections
+  booksSection.style.display = 'none';
+  addSection.style.display = 'none';
   contactSection.style.display = 'none';
 
+  // Afficher la section demandée
   section.style.display = 'block';
+
+  // Ajouter la classe active au lien correspondant
+  listLink.classList.remove('active');
+  addLink.classList.remove('active');
+  contactLink.classList.remove('active');
+
+  if (section === booksSection) listLink.classList.add('active');
+  if (section === addSection) addLink.classList.add('active');
+  if (section === contactSection) contactLink.classList.add('active');
 };
 
-booksLink.addEventListener('click', () => {
-  activateLink(booksLink);
-  showSection(bookListSection);
+// Gestionnaires d'événements pour la navigation
+listLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  showSection(booksSection);
 });
 
-addBookLink.addEventListener('click', () => {
-  activateLink(addBookLink);
-  showSection(addBookSection);
+addLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  showSection(addSection);
 });
 
-contactLink.addEventListener('click', () => {
-  activateLink(contactLink);
+contactLink.addEventListener('click', (e) => {
+  e.preventDefault();
   showSection(contactSection);
 });
 
