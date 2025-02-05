@@ -166,6 +166,8 @@ button:hover {
   padding: 1rem;
   border-bottom: 1px solid #eee;
   transition: var(--transition);
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .book-item:hover {
@@ -322,6 +324,38 @@ input[type="text"]:focus {
     padding-top: 3rem;
     margin-top: 0;
   }
+
+  .book-item {
+    padding: 0.8rem;
+  }
+
+  .book-info {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .book-title,
+  .book-author {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .remove-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  /* Ajustement pour la prévisualisation */
+  .books-preview .book-item {
+    flex-direction: column;
+  }
+
+  .books-preview .book-info {
+    text-align: center;
+    align-items: center;
+  }
 }
 
 /* Animations */
@@ -462,15 +496,28 @@ footer {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.book-title,
+.book-author {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
 }
 
 .book-title {
   font-weight: 500;
   color: var(--primary-color);
+  word-break: break-word;
 }
 
 .book-author {
   color: var(--secondary-color);
+  word-break: break-word;
 }
 
 /* Animation pour les nouveaux livres */
