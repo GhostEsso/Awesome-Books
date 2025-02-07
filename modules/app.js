@@ -122,6 +122,8 @@ export const initializeApp = () => {
     titleInput.value = '';
     authorInput.value = '';
 
+    const addSection = document.querySelector('.add-section');
+    const overlay = document.querySelector('.overlay');
     addSection.classList.remove('active');
     overlay.classList.remove('active');
     document.body.style.overflow = '';
