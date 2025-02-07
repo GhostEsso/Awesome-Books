@@ -1,6 +1,5 @@
 import { DateTime } from './luxon.js';
 
-
 const getTime = () => {
   const dt = DateTime.now();
   return dt.toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
@@ -38,30 +37,50 @@ const setupEventListeners = (bookCollection) => {
 export const initializeApp = () => {
   const bookCollection = [];
   const bookList = document.querySelector('.books-container');
-  const lastBookPreview = document.createElement('div');
   const addForm = document.querySelector('.add-book-form');
-
-  // Style pour la prévisualisation du dernier livre
-  lastBookPreview.classList.add('books-preview');
-  addForm.insertAdjacentElement('beforebegin', lastBookPreview);
 
   const createBookElement = (book) => {
     const bookElement = document.createElement('div');
     bookElement.classList.add('book-item');
-    bookElement.innerHTML = `
-      <div class="book-info">
-        <span class="book-title">"${book.title}"</span>
-        <span>by</span>
-        <span class="book-author">${book.author}</span>
+
+    // Créer l'effet 3D du livre
+    const bookCover = document.createElement('div');
+    bookCover.classList.add('book-cover');
+
+    const bookSpine = document.createElement('div');
+    bookSpine.classList.add('book-spine');
+
+    // eslint-disable-next-line no-use-before-define
+    const randomColor = getRandomColor();
+    bookCover.style.backgroundColor = randomColor;
+    bookSpine.style.backgroundColor = randomColor;
+
+    // Ajouter le titre et l'auteur sur la tranche du livre
+    bookSpine.innerHTML = `
+      <div class="spine-content">
+        <div class="spine-title">${book.title}</div>
+        <div class="spine-author">${book.author}</div>
       </div>
-      <button class="remove-btn">Remove</button>
     `;
+
+    // Ajouter le titre et l'auteur sur la couverture
+    bookCover.innerHTML = `
+      <div class="cover-content">
+        <div class="cover-title">${book.title}</div>
+        <div class="cover-author">by ${book.author}</div>
+      </div>
+    `;
+
+    bookElement.appendChild(bookSpine);
+    bookElement.appendChild(bookCover);
+    bookElement.innerHTML += '<button class="remove-btn">Remove</button>';
 
     const removeBtn = bookElement.querySelector('.remove-btn');
     removeBtn.addEventListener('click', () => {
       const index = bookCollection.indexOf(book);
       if (index > -1) {
         bookCollection.splice(index, 1);
+        // eslint-disable-next-line no-use-before-define
         updateDisplay();
       }
     });
@@ -69,22 +88,20 @@ export const initializeApp = () => {
     return bookElement;
   };
 
+  const getRandomColor = () => {
+    const colors = [
+      '#2c3e50', '#e74c3c', '#3498db',
+      '#9b59b6', '#f1c40f', '#1abc9c',
+    ];
+    return colors[Math.floor(Math.random() * colors.length)];
+  };
+
   const updateDisplay = () => {
-    // Mettre à jour la liste principale
     bookList.innerHTML = '';
-    bookCollection.forEach(book => {
+    bookCollection.forEach((book) => {
       const bookElement = createBookElement(book);
       bookList.appendChild(bookElement);
     });
-
-    // Mettre à jour la prévisualisation (uniquement le dernier livre)
-    lastBookPreview.innerHTML = '';
-    if (bookCollection.length > 0) {
-      const lastBook = bookCollection[bookCollection.length - 1];
-      const previewElement = createBookElement(lastBook);
-      lastBookPreview.appendChild(previewElement);
-    }
-
     localStorage.setItem('books', JSON.stringify(bookCollection));
   };
 
@@ -104,6 +121,10 @@ export const initializeApp = () => {
 
     titleInput.value = '';
     authorInput.value = '';
+
+    addSection.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
   });
 
   // Charger les livres existants
@@ -112,6 +133,29 @@ export const initializeApp = () => {
     bookCollection.push(...JSON.parse(savedBooks));
     updateDisplay();
   }
+
+  const addLink = document.querySelector('.add-link');
+  const addSection = document.querySelector('.add-section');
+
+  // Créer l'overlay
+  const overlay = document.createElement('div');
+  overlay.classList.add('overlay');
+  document.body.appendChild(overlay);
+
+  // Gestionnaire pour afficher le formulaire
+  addLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    addSection.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Empêcher le défilement
+  });
+
+  // Fermer le formulaire en cliquant sur l'overlay
+  overlay.addEventListener('click', () => {
+    addSection.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = ''; // Réactiver le défilement
+  });
 };
 
 export default setupEventListeners;
