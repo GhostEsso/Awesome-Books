@@ -54,6 +54,18 @@ contactLink.addEventListener('click', (e) => {
   showSection(contactSection);
 });
 
+// Ajouter l'écouteur d'événements pour le formulaire
+const addBookForm = document.getElementById('add-book');
+if (addBookForm) {
+  addBookForm.addEventListener('submit', () => {
+    // Laisser le formulaire se soumettre normalement
+    // Puis rediriger vers la section des livres
+    setTimeout(() => {
+      showSection(booksSection);
+    }, 100);
+  });
+}
+
 const logoLink = document.querySelector('.logo');
 
 logoLink.addEventListener('click', () => {
