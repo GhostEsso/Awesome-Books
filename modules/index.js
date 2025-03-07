@@ -1,5 +1,5 @@
 import { initializeApp } from './app.js';
-import { initMobileMenu } from './mobileMenu.js';
+import initMobileMenu from './mobileMenu.js';
 
 // Initialiser le menu mobile en premier
 initMobileMenu();

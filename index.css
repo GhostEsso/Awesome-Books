@@ -86,33 +86,88 @@ button:hover {
   background: white;
   z-index: 1000;
   box-shadow: var(--shadow);
-  padding: 0.5rem;
+  padding: 1rem;
   top: 0;
+  display: flex;
+  align-items: center;
 }
 
 /* Styles du menu mobile */
 .menu-icon {
   display: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  background: none;
-  border: none;
-  z-index: 1002;
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  width: 35px;
-  height: 35px;
 }
 
-.menu-icon div {
-  width: 25px;
-  height: 2px;
-  background-color: var(--primary-color);
-  margin: 6px 0;
-  transition: var(--transition);
-  border-radius: 2px;
-  pointer-events: none;
+.app-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  flex-grow: 1;
+  padding-left: 5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    justify-content: flex-end;
+    padding: 1rem;
+  }
+
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 1002;
+    width: 30px;
+    height: 24px;
+    margin-left: auto; /* Pousse l'icône menu à droite */
+    margin-right: 5rem;
+  }
+
+  .app-title {
+    font-size: 1.2rem;
+    padding-left: 0;
+  }
+
+  .menu-icon div {
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    margin: 5px 0;
+    transition: var(--transition);
+  }
+
+  .menu-icon.active div:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-icon.active div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-icon.active div:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    padding: 2rem;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
 }
 
 /* Navigation Links */
@@ -928,17 +983,6 @@ footer {
   visibility: visible;
 }
 
-/* Ajoutez ces styles pour le titre de l'application */
-.app-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary-color);
-  position: absolute;
-  left: 2rem;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 /* Style pour le titre de la collection */
 .collection-title {
   font-family: 'Inter', sans-serif;
@@ -952,11 +996,6 @@ footer {
 
 /* Media queries pour la responsivité */
 @media screen and (max-width: 768px) {
-  .app-title {
-    font-size: 1.2rem;
-    left: 1rem;
-  }
-
   .collection-title {
     font-size: 2rem;
     margin: 2rem 0;

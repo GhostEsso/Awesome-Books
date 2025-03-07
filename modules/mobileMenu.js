@@ -1,6 +1,7 @@
-export const initMobileMenu = () => {
+export default function initMobileMenu() {
   const menuIcon = document.getElementById('menuIcon');
   const navLinks = document.querySelector('.nav-links');
+  const { body } = document;
 
   if (!menuIcon || !navLinks) {
     console.error('Menu elements not found');
@@ -8,31 +9,33 @@ export const initMobileMenu = () => {
   }
 
   // Fonction pour basculer le menu
-  const toggleMenu = () => {
-    console.log('Toggle menu clicked'); // Pour le débogage
+  const toggleMenu = (e) => {
+    e.stopPropagation();
     menuIcon.classList.toggle('active');
     navLinks.classList.toggle('active');
+    body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
   };
 
-  // Ajouter l'écouteur d'événement avec capture
-  menuIcon.addEventListener('click', toggleMenu, true);
+  // Ajouter l'écouteur d'événement au menu
+  menuIcon.addEventListener('click', toggleMenu);
 
   // Fermer le menu quand on clique sur un lien
-  document.querySelectorAll('.nav-links a').forEach(link => {
+  document.querySelectorAll('.nav-links a').forEach((link) => {
     link.addEventListener('click', () => {
       menuIcon.classList.remove('active');
       navLinks.classList.remove('active');
+      body.style.overflow = '';
     });
   });
 
   // Fermer le menu quand on clique en dehors
   document.addEventListener('click', (e) => {
-    const isMenuOpen = navLinks.classList.contains('active');
-    const clickedOutside = !menuIcon.contains(e.target) && !navLinks.contains(e.target);
-    
-    if (isMenuOpen && clickedOutside) {
+    if (navLinks.classList.contains('active')
+        && !menuIcon.contains(e.target)
+        && !navLinks.contains(e.target)) {
       menuIcon.classList.remove('active');
       navLinks.classList.remove('active');
+      body.style.overflow = '';
     }
   });
-}; 
+}
