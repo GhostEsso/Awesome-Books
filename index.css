@@ -1,552 +1,417 @@
-/* Reset et variables globales */
 :root {
-  --primary-color: #2c3e50;
-  --secondary-color: #3498db;
-  --accent-color: #e74c3c;
-  --text-color: #333;
-  --background-color: #f5f6fa;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s ease;
+  /* Colors */
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --secondary: #ec4899;
+  --background: #0f172a;
+  --surface: rgba(30, 41, 59, 0.7);
+  --surface-light: rgba(51, 65, 85, 0.7);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --success: #10b981;
+  --danger: #ef4444;
+  --border: rgba(148, 163, 184, 0.1);
+
+  /* Effects */
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --blur: blur(20px);
+
+  /* Spacing */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
 
 body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  line-height: 1.6;
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--background);
+  color: var(--text-main);
   min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-h1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 2%;
-  padding-bottom: 2%;
-}
-
-.book {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#addBookForm {
-  display: grid;
-  place-items: center;
-  border: 2px solid #b8b1b1b7;
-  box-shadow: 0 5px 20px rgba(10, 6, 6, 0.63);
-  margin-left: 40%;
-  margin-right: 40%;
-  padding-top: 2%;
-  padding-bottom: 2%;
-}
-
-button {
-  display: grid;
-  margin-top: 1%;
-}
-
-button:hover {
-  background-color: green;
-  color: white;
-}
-
-.separator {
-  width: 20%;
-  margin: auto;
-  margin-top: 5%;
-}
-
-.even-book {
-  background-color: silver;
-  border: 2px solid #e0dddd;
-  box-shadow: 0 5px 20px rgb(0 0 0 / 0%);
-}
-
-.odd-book {
-  background-color: white;
-}
-
-#bookList {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Header et Navigation */
-.header {
+/* Background Animation */
+.background-globes {
   position: fixed;
-  width: 100%;
-  background: white;
-  z-index: 1000;
-  box-shadow: var(--shadow);
-  padding: 1rem;
+  width: 100vw;
+  height: 100vh;
   top: 0;
-  display: flex;
-  align-items: center;
-}
-
-/* Styles du menu mobile */
-.menu-icon {
-  display: none;
-}
-
-.app-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary-color);
-  flex-grow: 1;
-  padding-left: 5rem;
-}
-
-@media screen and (max-width: 768px) {
-  .header {
-    justify-content: flex-end;
-    padding: 1rem;
-  }
-
-  .menu-icon {
-    display: block;
-    cursor: pointer;
-    background: none;
-    border: none;
-    z-index: 1002;
-    width: 30px;
-    height: 24px;
-    margin-left: auto; /* Pousse l'icône menu à droite */
-    margin-right: 5rem;
-  }
-
-  .app-title {
-    font-size: 1.2rem;
-    padding-left: 0;
-  }
-
-  .menu-icon div {
-    width: 100%;
-    height: 2px;
-    background-color: var(--primary-color);
-    margin: 5px 0;
-    transition: var(--transition);
-  }
-
-  .menu-icon.active div:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-  }
-
-  .menu-icon.active div:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-icon.active div:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-  }
-
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    height: 100vh;
-    background: white;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    transition: right 0.3s ease;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    z-index: 1001;
-    padding: 2rem;
-  }
-
-  .nav-links.active {
-    right: 0;
-  }
-}
-
-/* Navigation Links */
-.nav-links {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  padding: 1rem;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--primary-color);
-  font-weight: 500;
-  transition: var(--transition);
-  padding: 0.8rem 1.2rem;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.nav-links a:hover {
-  background-color: var(--secondary-color);
-  color: white;
-  transform: translateY(-2px);
-}
-
-/* Navigation active state */
-.nav-links a.active {
-  background-color: var(--secondary-color);
-  color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Section principale */
-.main-content {
-  padding-top: 80px;
-  max-width: 1200px;
-  margin: 0 auto;
-  min-height: calc(100vh - 80px);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Liste des livres */
-.books-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-  background: linear-gradient(45deg, #8b4513, #654321);
-  border-radius: 8px;
-  box-shadow: 
-    inset 0 0 20px rgba(0, 0, 0, 0.3),
-    0 20px 20px -10px rgba(0, 0, 0, 0.3);
-  position: relative;
-}
-
-/* Effet d'étagère */
-.books-container::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
   left: 0;
-  right: 0;
-  height: 20px;
-  background: linear-gradient(45deg, #5c2c0c, #3b1c08);
-  transform: skewX(-45deg);
-  transform-origin: left;
-}
-
-.book-item {
-  position: relative;
-  height: 280px;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
-}
-
-.book-item:hover {
-  transform: rotateY(-30deg) translateY(-20px);
-  z-index: 1;
-}
-
-.book-cover {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transform: translateZ(20px);
-  border-radius: 2px;
-  background: var(--primary-color);
-  box-shadow: 
-    -5px 5px 15px rgba(0, 0, 0, 0.3),
-    2px 2px 5px rgba(255, 255, 255, 0.2) inset;
-}
-
-.book-spine {
-  position: absolute;
-  width: 40px;
-  height: 100%;
-  left: -20px;
-  transform: rotateY(90deg);
-  background: linear-gradient(to right, 
-    rgba(0, 0, 0, 0.2), 
-    rgba(255, 255, 255, 0.1));
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.book-content {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1.5rem;
-  color: white;
-  text-align: center;
-  transform: translateZ(21px);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(5px);
-  border-radius: 2px;
-}
-
-.book-title {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 0.8rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  word-wrap: break-word;
-  max-width: 100%;
-}
-
-.book-author {
-  font-size: 0.9rem;
-  opacity: 0.9;
-  word-wrap: break-word;
-  max-width: 100%;
-}
-
-.remove-btn {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%) translateZ(21px);
-  background: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  opacity: 0;
-  transition: all 0.3s;
-}
-
-.book-item:hover .remove-btn {
-  opacity: 1;
-}
-
-/* Formulaire d'ajout */
-.add-section {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 500px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  z-index: 9999;
-  padding: 2.5rem;
-  margin: 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-}
-
-.add-section.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.add-section h2 {
-  color: var(--primary-color);
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
-  position: relative;
-}
-
-.add-section h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 3px;
-  background: var(--secondary-color);
-  border-radius: 2px;
-}
-
-.add-book-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.form-group {
-  position: relative;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 1rem;
-  border: 2px solid #e1e1e1;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  background: #f8f9fa;
-}
-
-.form-group input:focus {
-  border-color: var(--secondary-color);
-  background: white;
-  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
-  outline: none;
-}
-
-.form-group input::placeholder {
-  color: #adb5bd;
-}
-
-.add-btn {
-  background: var(--secondary-color);
-  color: white;
-  padding: 1rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 1rem;
-  position: relative;
+  z-index: -1;
   overflow: hidden;
 }
 
-.add-btn::before {
-  content: '';
+.globe {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.6s ease, height 0.6s ease;
+  filter: blur(80px);
+  opacity: 0.6;
+  animation: float 20s infinite ease-in-out;
 }
 
-.add-btn:hover::before {
+.globe-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--primary);
+  top: -100px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.globe-2 {
+  width: 500px;
+  height: 500px;
+  background: var(--secondary);
+  bottom: -100px;
+  right: -100px;
+  animation-delay: -5s;
+}
+
+.globe-3 {
   width: 300px;
   height: 300px;
+  background: #8b5cf6;
+  top: 40%;
+  left: 40%;
+  animation-delay: -10s;
 }
 
-.add-btn:hover {
-  background: #2980b9;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  33% {
+    transform: translate(30px, -50px);
+  }
+
+  66% {
+    transform: translate(-20px, 20px);
+  }
 }
 
-/* Animation pour le formulaire */
-@keyframes slideUp {
+/* Header */
+.header {
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border-bottom: var(--glass-border);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.logo i {
+  color: var(--primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active i {
+  color: var(--primary);
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Main Content */
+.main-content {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 20px;
+}
+
+.time-display {
+  text-align: right;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  font-weight: 500;
+  font-family: monospace;
+}
+
+.content-section {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.content-section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.add-book-form {
-  animation: slideUp 0.5s ease-out;
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-/* Animation pour les sections */
-.books-section,
-.add-section,
-.contact-section {
-  animation: fadeIn 0.3s ease-out;
+.section-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Prévisualisation des livres ajoutés */
-.books-preview {
-  margin: 2rem 0;
-  background: white;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-  overflow: hidden;
+.section-header p {
+  color: var(--text-muted);
 }
 
-.books-preview .book-item {
-  border-bottom: 1px solid #eee;
-  background: rgba(52, 152, 219, 0.05);
+/* Book List Grid */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
-.books-preview .book-item:last-child {
-  border-bottom: none;
-}
-
-.book-info {
+.book-card {
+  background: var(--surface);
+  backdrop-filter: var(--blur);
+  border: var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  flex-wrap: wrap;
-  flex: 1;
-  min-width: 0;
-}
-
-.book-title,
-.book-author {
+  flex-direction: column;
+  position: relative;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 100%;
 }
 
-.book-title {
-  font-weight: 500;
-  color: var(--primary-color);
-  word-break: break-word;
+.book-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--primary), var(--secondary));
 }
 
-.book-author {
-  color: var(--secondary-color);
-  word-break: break-word;
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+  border-color: rgba(99, 102, 241, 0.3);
 }
 
-/* Animation pour les nouveaux livres */
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.book-info h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
 }
 
-.book-item {
-  animation: slideIn 0.3s ease-out forwards;
+.book-info .author {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  display: block;
 }
 
-/* Section Contact */
-.contact-section {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-  max-width: 600px;
-  margin: 2rem auto;
+.delete-btn {
+  align-self: flex-end;
+  margin-top: auto;
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.contact-section h2 {
-  color: var(--primary-color);
+.delete-btn:hover {
+  background: var(--danger);
+  color: white;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  border: 2px dashed var(--border);
+}
+
+.empty-state i {
+  font-size: 3rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.empty-state.hidden {
+  display: none;
+}
+
+/* Add Form */
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--surface);
+  backdrop-filter: var(--blur);
+  border: var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--glass-shadow);
+}
+
+.form-header {
   text-align: center;
   margin-bottom: 2rem;
 }
 
-.contact-info {
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.input-group i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+
+.input-group input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  padding: 1rem 1rem 1rem 3rem;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.input-group input:focus+label,
+.input-group input:not(:placeholder-shown)+label {
+  display: none;
+  /* Or float if you prefer floating label style, but simpler is better here */
+}
+
+.input-group label {
+  position: absolute;
+  left: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  opacity: 0;
+  /* Hidden because using placeholder */
+}
+
+/* Button */
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: opacity 0.3s;
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+}
+
+/* Contact Card */
+.contact-card {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--surface);
+  backdrop-filter: var(--blur);
+  border: var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 3rem;
+  text-align: center;
+}
+
+.contact-links {
+  margin-top: 2.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -555,449 +420,84 @@ button:hover {
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   padding: 1rem;
-  background: rgba(52, 152, 219, 0.05);
-  border-radius: 8px;
-  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--text-main);
+  transition: transform 0.2s, background 0.2s;
+  border: 1px solid transparent;
 }
 
 .contact-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary);
   transform: translateX(10px);
-  background: rgba(52, 152, 219, 0.1);
 }
 
-.contact-item i {
-  color: var(--secondary-color);
-  font-size: 1.2rem;
-  width: 24px;
-  text-align: center;
-}
-
-.contact-item span {
-  color: var(--text-color);
-}
-
-@media screen and (max-width: 768px) {
-  .contact-section {
-    margin: 2rem 1rem;
-  }
-}
-
-/* Styles pour l'étagère */
-.books-container {
-  perspective: 1000px;
-  margin: 2rem auto;
-  min-height: 400px;
-  position: relative;
-}
-
-.bookshelf-wrapper {
-  transform-style: preserve-3d;
-  transition: transform 0.5s ease;
-}
-
-.book {
-  transition: transform 0.3s ease;
-}
-
-.book:hover {
-  transform: translateY(-10px) rotateX(-20deg);
-  cursor: pointer;
-}
-
-/* Animation pour l'ajout de nouveaux livres */
-@keyframes addBook {
-  from {
-    transform: translateY(-50px) rotateX(-90deg);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0) rotateX(0);
-    opacity: 1;
-  }
-}
-
-.book.new {
-  animation: addBook 0.5s ease-out forwards;
-}
-
-/* Styles pour le texte sur la tranche du livre */
-.spine-content {
-  position: absolute;
-  width: 280px;
+.icon-box {
+  width: 40px;
   height: 40px;
-  transform: rotate(90deg) translateX(-50%);
-  transform-origin: left;
-  left: 20px;
-  top: 50%;
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary);
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0.5rem;
-  color: white;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.spine-title {
-  font-size: 0.9rem;
-  font-weight: bold;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.spine-author {
-  font-size: 0.8rem;
-  opacity: 0.9;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Styles pour le texte sur la couverture */
-.cover-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 1.5rem;
-  color: white;
-  text-align: center;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.1),
-    rgba(0, 0, 0, 0.2)
-  );
-}
-
-.cover-title {
+  justify-content: center;
   font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.8rem;
-  word-wrap: break-word;
-  max-width: 100%;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.cover-author {
-  font-size: 1rem;
-  opacity: 0.9;
-  word-wrap: break-word;
-  max-width: 100%;
+.info {
+  text-align: left;
 }
 
-/* Animation au survol */
-.book-item:hover .cover-content {
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.3)
-  );
-}
-
-/* Ajustements pour mobile */
-@media screen and (max-width: 768px) {
-  .spine-content {
-    width: 220px;
-  }
-
-  .spine-title {
-    font-size: 0.8rem;
-  }
-
-  .spine-author {
-    font-size: 0.7rem;
-  }
-
-  .cover-title {
-    font-size: 1rem;
-  }
-
-  .cover-author {
-    font-size: 0.9rem;
-  }
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .add-section {
-    width: 95%;
-    padding: 2rem;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-
-  .main-content {
-    padding-top: 100px;
-  }
-
-  .add-section h2 {
-    font-size: 1.5rem;
-  }
-
-  .form-group input {
-    padding: 0.8rem;
-    font-size: 0.9rem;
-  }
-
-  .add-btn {
-    padding: 0.8rem;
-    font-size: 0.9rem;
-  }
-}
-
-/* Pour les très petits écrans */
-@media screen and (max-width: 480px) {
-  .add-section {
-    width: 100%;
-    padding: 1.5rem;
-    border-radius: 0;
-  }
-
-  .add-section h2 {
-    font-size: 1.3rem;
-  }
-
-  .form-group {
-    margin-bottom: 1rem;
-  }
-
-  .form-group input {
-    padding: 0.7rem;
-    font-size: 0.85rem;
-  }
-}
-
-/* Effet de focus amélioré pour l'accessibilité */
-.form-group input:focus-visible {
-  outline: 2px solid var(--secondary-color);
-  outline-offset: 1px;
-}
-
-/* Style pour les messages de validation */
-.form-group .error-message {
-  color: var(--accent-color);
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-  display: none;
-}
-
-.form-group input:invalid:not(:placeholder-shown) + .error-message {
+.info .label {
   display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.book-item {
-  animation: fadeIn 0.3s ease-out;
-}
-
-/* nav  */
-nav {
-  padding: 0;
-}
-
-nav ul,
-.nav-links {
-  border: none;
-  box-shadow: none;
-}
-
-nav ul .logo {
-  margin-right: auto;
-  cursor: pointer;
-}
-
-nav ul li {
-  margin-right: 20px;
-  border-right: 1px solid rgb(128 47 0);
-  padding-right: 10px;
-}
-
-nav ul li:last-child {
-  border-right: none;
-  padding-right: 0;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-}
-
-nav ul li a.active {
-  color: #f00;
-}
-
-.right-section {
-  float: right;
-}
-
-#contactSection {
-  display: grid;
-  place-items: center;
-  border: 2px solid #fff;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.685);
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-left: 3%;
-  margin-left: 30%;
-  margin-right: 30%;
-  list-style-type: none;
-}
-
-#bookList.border {
-  border: 3px solid rgb(8 8 8);
-  margin: 1%;
-}
-
-.copyright {
-  border: 2px solid rgb(0 0 0);
-  padding: 5px;
-}
-
-#current_date {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 4%;
-}
-
-/* Style du contenu de la page */
-#content {
-  flex: 1;
-}
-
-footer {
-  flex-shrink: 0;
-}
-
-/* Section transitions */
-.books-section,
-.add-section,
-.contact-section {
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-.books-section[style*="display: none"],
-.add-section[style*="display: none"],
-.contact-section[style*="display: none"] {
-  opacity: 0;
-}
-
-/* Prévisualisation des livres ajoutés */
-.books-preview {
-  margin: 2rem 0;
-  background: white;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-.books-preview .book-item {
-  border-bottom: 1px solid #eee;
-  background: rgba(52, 152, 219, 0.05);
-}
-
-.books-preview .book-item:last-child {
-  border-bottom: none;
-}
-
-.book-info {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  flex-wrap: wrap;
-  flex: 1;
-  min-width: 0;
-}
-
-.book-title,
-.book-author {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 100%;
-}
-
-.book-title {
+.info .value {
   font-weight: 500;
-  color: var(--primary-color);
-  word-break: break-word;
 }
 
-.book-author {
-  color: var(--secondary-color);
-  word-break: break-word;
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: auto;
 }
 
-/* Animation pour les nouveaux livres */
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
+/* Mobile */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
   }
-  to {
-    opacity: 1;
+
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--background);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+    transform: translateY(-150%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-menu.active {
     transform: translateY(0);
   }
-}
 
-.book-item {
-  animation: slideIn 0.3s ease-out forwards;
-}
-
-/* Overlay pour le fond sombre */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(3px);
-  z-index: 9998;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-}
-
-.overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Style pour le titre de la collection */
-.collection-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-align: center;
-  color: var(--primary-color);
-  margin: 3rem 0;
-  letter-spacing: -0.02em;
-}
-
-/* Media queries pour la responsivité */
-@media screen and (max-width: 768px) {
-  .collection-title {
-    font-size: 2rem;
-    margin: 2rem 0;
+  .globe {
+    opacity: 0.4;
   }
 }
